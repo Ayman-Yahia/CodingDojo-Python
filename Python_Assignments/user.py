@@ -9,6 +9,9 @@ class User:
         self.balance+=amount
     def display_account(self):
         print(self.name+' '+" balance currently is " +' '+str(self.balance))
+    def transfer_money(self,other_user,amount):
+        self.balance-=amount
+        other_user.balance+=amount
 
 
 mousa=User('mousa','mousa@gmail.com')
@@ -29,3 +32,6 @@ ahmad.withdrawl(20)
 ahmad.withdrawl(10)
 ahmad.withdrawl(15)
 ahmad.display_account()
+mousa.transfer_money
+mousa.transfer_money(ahmad,200)
+mousa.display_account()

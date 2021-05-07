@@ -12,11 +12,14 @@ class BankAccount:
     def withdraw(self,amount):
         self.balance-=amount
     def yield_interest(self):
-        self.balance += self.balance * (self.int_rate / 100)
+        if self.balance>0:
+            self.balance += self.balance * (self.int_rate)
+        else:
+            print ('your account is empty')
     def display_account(self):
         print("Account balance: $" + str(self.balance) +'  '+ "Interest rate: "+str(self.int_rate))
-ayman=User('ayman','ayman@gmail.com',3,500)
-mousa=User('mousa','mousa@gmail.com',8,200)
+ayman=User('ayman','ayman@gmail.com',0.03,500)
+mousa=User('mousa','mousa@gmail.com',0.08,200)
 ayman.account.deposit(200)
 ayman.account.deposit(100)
 ayman.account.deposit(300)
