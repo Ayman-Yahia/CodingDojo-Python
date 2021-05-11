@@ -1,8 +1,11 @@
-def count_substring(string,sub_string):
-    l=0
-    m=string.split(sub_string)
-    for x in range(len(m)):
-        l+=len(m[x])
-    count=(len(string)-l)/len(sub_string)
-    print(count)
-count_substring('ABSHIZLMSHIZ','HIZ')
+def two_sums(arr,target):
+    newarr=[]
+    for x in range(len(arr)):
+        for i in range(1,len(arr)):
+            if arr[i]+arr[x]==target:
+                newarr.append(x)
+                newarr.append(i)
+                print(newarr)
+                return newarr
+two_sums([3,2,4], 6)
+
