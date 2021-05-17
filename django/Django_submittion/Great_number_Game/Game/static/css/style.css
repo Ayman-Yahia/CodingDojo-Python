@@ -1,0 +1,46 @@
+*{
+	margin: 0 ;
+	padding: 0;
+	font-family: Arial, Helvetica, sans-serif
+}
+
+#container{
+	background-color: cornflowerblue;
+}
+.counter{
+}
+.header{
+    width: 400px;
+}
+
+#low{
+	width: 200px;
+	height: 150px;
+	font-size: 1.5em;
+	font-weight: bold;
+	text-align: center;
+	color: white;
+	background-color: red;
+}
+#high{
+	width: 200px;
+	height: 150px;
+	font-size: 1.5em;
+	font-weight: bold;
+	text-align: center;
+	color: white;
+	background-color: red;
+}
+#result{
+	width: 350px;
+	height: 250px;
+	background-color: green;
+	margin: auto;
+	position: relative;
+}
+
+
+
+
+
+
