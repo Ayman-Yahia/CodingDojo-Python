@@ -1,0 +1,37 @@
+1-
+Dojo.objects.create(name="Kalari", city="Jenin", state="Jenin")
+Dojo.objects.create(name="Heya", city="Chicago", state="Illinois")
+2-
+c = Dojo.objects.get(id=1)
+c.delete()
+c = Dojo.objects.get(id=2)
+c.delete()
+c = Dojo.objects.get(id=3)
+c.delete()
+3-
+Dojo.objects.create(name="Akhara", city="Burbank", state="CA")
+Dojo.objects.create(name="Dojang", city="Phoenix", state="AZ")
+Dojo.objects.create(name="Gelanggang", city="Portland", state="OR")
+4-
+c= Dojo.objects.get(id=4)
+Ninja.objects.create(first_name="Ayman", last_name="Yahia", dojo=c)
+Ninja.objects.create(first_name="Ahmad", last_name="Loay", dojo=c)
+Ninja.objects.create(first_name="Mohammed", last_name="Karam", dojo=c)
+5-
+c= Dojo.objects.get(id=5)
+Ninja.objects.create(first_name="Barbara", last_name="Walters", dojo=c)
+Ninja.objects.create(first_name="Frank", last_name="Sinatra", dojo=c)
+Ninja.objects.create(first_name="Marshall", last_name="Mathers", dojo=c)
+6-
+c= Dojo.objects.get(id=6)
+Ninja.objects.create(first_name="Craig", last_name="Sager", dojo=c)
+Ninja.objects.create(first_name="Big", last_name="Bird", dojo=c)
+Ninja.objects.create(first_name="Tupac", last_name="Shakur", dojo=c)
+7-
+c=Dojo.objects.get(id=4)
+Ninja.objects.filter(dojo=c).values()
+8-
+c=Dojo.objects.get(id=6)
+Ninja.objects.filter(dojo=c).values()
+9-
+last = ninja.objects.filter(dojo=dojo.objects.get(id=6))
