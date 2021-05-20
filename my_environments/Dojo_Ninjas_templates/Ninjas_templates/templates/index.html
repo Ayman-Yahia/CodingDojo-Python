@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dojos & Ninjas Templates</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"> 
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+</head>
+<body>
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="forms">
+                <div class="col form1">
+                    <h3 class="jumbotron-heading">Add a Dojo</h3>
+                    <form action="/dojo" method="post">
+                        {% csrf_token %}
+                        <label for="Name">Name</label>
+                        <input type="text" class="form-control" name="name" placeholder="" value="">
+                        <label for="City">City</label>
+                        <input type="text" class="form-control" name="city" placeholder="" value="">
+                        <label for="State">State</label>
+                        <input type="text" class="form-control" name="state" placeholder="" value=""><br>
+                        <button class="btn btn-primary btn-lg btn-block" type="submit">Add</button>
+                    </form>
+                </div>
+                <div class="col form1">
+                    <h3 class="jumbotron-heading">Add a Ninja</h3>
+                    <form action="/ninja" method="post">
+                        {% csrf_token %}
+                        <label for="first_name">First Name</label>
+                        <input type="text" class="form-control" name="first_name" placeholder="" value="">
+                        <label for="last_name">Last Name</label>
+                        <input type="text" class="form-control" name="last_name" placeholder="" value=""><br>
+                        <label for="dojo">Dojo</label>
+                        <select name='dojo'>
+                            <option value='{{ dojo.name }}'></option>
+                            {% for dojo in all_the_Dojos %}
+                            <option value='{{ dojo.name }}'>{{ dojo.name }}</option>
+                            {% endfor%}
+                        </select><br><br><br>
+                        <button class="btn btn-primary btn-lg btn-block" type="submit">Add</button>
+                    </form>
+                </div>  
+            </div>
+            <div class="col">
+                <ul class="list-group">
+                    {% for dojo in all_the_Dojos %}                 
+                    <li class="list-group-item active">{{ dojo.name }} <button class="btn btn-dark" herf="/delete" name="{{dojo.name}}">delete</button>
+                        <ul class="list-group">
+                            {% for ninja in dojo.ninjas.all %}
+                                <li class="list-group-item">{{ninja.first_name}} {{ninja.last_name}}</li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
