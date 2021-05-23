@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books & Authors</title>
+    <link rel="stylesheet" href="{% static 'css/style1.css' %}"> 
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container cont">
+        <div class="form1">
+            <h3 class="jumbotron-heading">Add an Author</h3>
+            <form action="/add_author" method="post">
+                {% csrf_token %}
+                <label for="first_name">First Name</label>
+                <input type="text" class="form-control" name="first_name" placeholder="" value="">
+                <label for="last_name">Last Name</label>
+                <input type="text" class="form-control" name="last_name" placeholder="" value="">
+                <label for="floatingTextarea2">Notes</label>
+                <textarea name="notes" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea><br>
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Add</button>
+            </form>
+        </div>
+        <div class="table-1">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for author in all_the_authors %}
+                    <tr>
+                        <th scope="row">{{author.id}}</th>
+                        <td>{{author.first_name}} {{author.last_name}}</td>
+                        <td><a href="http://127.0.0.1:8000/authors/{{author.id}}">view</a> </td>
+                    </tr>
+                    {% endfor%}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</body>
+</html>
