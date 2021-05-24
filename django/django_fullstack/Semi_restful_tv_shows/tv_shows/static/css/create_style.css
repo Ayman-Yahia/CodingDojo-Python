@@ -1,0 +1,14 @@
+*{
+    margin: 0 auto;
+    padding: 0;
+}
+.com{
+    width: 900px;
+    background-color: rgb(186, 189, 196);
+    padding: 30px;
+    margin-top: 20px;
+    display: flex;
+}
+.con{
+    width: 750px;
+}
