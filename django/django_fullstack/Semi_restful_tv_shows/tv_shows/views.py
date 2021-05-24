@@ -20,10 +20,6 @@ def show(request,show_id):
         "shows":Show.objects.get(id=show_id)
     }
     return render(request,"show.html",context1)
-def edit(request,show_id):
-    if not "s_id" in request.session:
-        request.session["s_id"]=0
-    return render(request,"edit.html")
 def show_edit(request,show_id):
     context2={
         "shows":Show.objects.get(id=show_id)
