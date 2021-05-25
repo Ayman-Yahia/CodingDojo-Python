@@ -14,29 +14,36 @@
     <div class="container com">
         <div class="content con">
             <h1 class="jumbotron-heading">Add a New Show</h1>
+            {% if messages %}
+            <ul class="messages mt-4">
+                {% for message in messages %}
+                <li {% if message.tags %} class="{{ message.tags }} text-danger" {% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
             <div class="forms">
                 <form action="create" method="post">
                     {% csrf_token %}
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <label for="title">Title</label>
+                            <label for="first_name">Title</label>
                             <input type="text" class="form-control" name="title" placeholder="" value="" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <label for="network">Network</label>
+                            <label for="first_name">Network</label>
                             <input type="text" class="form-control" name="network" placeholder="" value="" required>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="release_date">Release Date</label>
+                            <label for="first_name">Release Date</label>
                             <input type="date" class="form-control" name="release_date" placeholder="" value="" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <label for="description">Description</label>
-                            <textarea name="description" class="form-control" placeholder="" id="floatingTextarea2" style="height: 100px; width: 450px;" required></textarea>
+                            <label for="first_name">Description</label>
+                            <textarea name="description" class="form-control" placeholder="" id="floatingTextarea2" style="height: 100px; width: 450px;"></textarea>
                         </div>
                     </div>
                     <div class="row mt-5 justify-content-center">
