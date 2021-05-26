@@ -17,7 +17,7 @@ class UserManager(models.Manager):
         if len(User.objects.filter(email=postData['email']))>0:
             errors['email'] = "This email already used"
         EMAILREGEX = re.compile(r'^[a-zA-Z0-9.+-]+@[a-zA-Z0-9._-]+.[a-zA-Z]+$')
-        if not EMAIL_REGEX.match(postData['email']):    # test whether a field matches the pattern
+        if not EMAILREGEX.match(postData['email']):    # test whether a field matches the pattern
             errors['email'] = "Invalid email address!"
         today = datetime.datetime.now().strftime("%Y%m%d")
         if postData["birthday"].replace("-","") > today:
