@@ -11,6 +11,7 @@ def index1(request):
         "all_the_shows":Show.objects.all()
     }
     return render (request,'index.html',context)
+
 def show_create(request):
     errors = Show.objects.basic_validator(request.POST)
     if len(errors) > 0:
@@ -20,8 +21,10 @@ def show_create(request):
     else: 
         show = Show.objects.create(title=request.POST['title'], network=request.POST['network'], release_date=request.POST['release_date'], desc=request.POST['description'])
         return redirect(f"/shows/{show.id}")
+
 def new_show(request):
     return render(request,"create.html")
+    
 def show(request,show_id):
     context1={
         "shows":Show.objects.get(id=show_id)
