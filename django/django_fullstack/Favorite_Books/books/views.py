@@ -37,8 +37,10 @@ def login_user(request):
     else:
         return HttpResponse('The email you provided is Invalid')
 def books(request):
+    user=User.objects.get(id=request.session['user_id'])
     context={
-        'books':Book.objects.all()
+        'books':Book.objects.all(),
+        'fav_books':user.liked_books.all()
     }
     return render(request,'books.html',context)
 def add_book(request):
@@ -53,8 +55,10 @@ def add_book(request):
         return redirect ('/books')
 def book_show(request,book_id):
     request.session['book_id']=book_id
+    bo=Book.objects.get(id=book_id)
     context1={
-        'books':Book.objects.all(),
+        'fav_users':bo.user_who_like.all(),
+        'users':User.objects.all(),
         'book':Book.objects.get(id=book_id)
     }
     return render(request,'book.html',context1)

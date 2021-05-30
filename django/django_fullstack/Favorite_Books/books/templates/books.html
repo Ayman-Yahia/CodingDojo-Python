@@ -68,7 +68,7 @@
                     <a href="http://127.0.0.1:8000/books/{{book.id}}"><h4 class="jumbotron-heading">{{book.title}}</h4></a>
                     <p>(added by :{{book.uploaded_by.first_name}} {{book.uploaded_by.last_name}})</p>
                     {% if book.uploaded_by.id == request.session.user_id %}<h6>This is one of your favorites</h6>{% endif %}
-                    {% if book.uploaded_by.id != request.session.user_id %}<a href="http://127.0.0.1:8000/books/fav_book/{{book.id}}"> Add to Favorties</a>{% endif %}
+                    {% if book in fav_books %}<a href="http://127.0.0.1:8000/books/fav_book/{{book.id}}"> Add to Favorties</a>{% endif %}
                 </div>
             {% endfor %}
         </div>

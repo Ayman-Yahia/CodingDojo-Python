@@ -78,11 +78,11 @@
             <h1 class="jumbotron-heading">Users Who Like This Book:</h1>
                 <div class="book">
                     <ul>
-                        {% for book in books %}
-                        <li>{{book.title}}  {% if book.uploaded_by.id == request.session.user_id %}<a href="http://127.0.0.1:8000/books/un_fav/{{book.id}}"> Un-Favorite</a>{% endif %}</li>
+                        {% for user in fav_users %}
+                        <li>{{user.first_name}} {{user.last_name}} {% if user in fav_users %}<a href="http://127.0.0.1:8000/books/un_fav/{{book.id}}"> Un-Favorite</a>{% endif %}</li>
                         {% endfor %}
                     </ul>
-                    {% if book.uploaded_by.id != request.session.user_id %}
+                    {% if user not in fav_users %}
                         <a href="http://127.0.0.1:8000/books/fav_book/{{book.id}}"> Add to Favorites</a>
                     {% endif %}
                 </div>
